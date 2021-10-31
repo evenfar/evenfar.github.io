@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Apache日志分析 - 李希然的博客</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="实验环境
+操作机：Kali
+目标机： Centos7
+目标地址：172.16.12.2
+目标主机用户名：root
+目标主机密码：ICQsafe666
+
+实验工具
+FireFox：
+火狐浏览器，用来访,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="李希然的博客" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">李希然的博客</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Apache日志分析</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Apache日志分析</h1>
+        <div class="stuff">
+            <span>十月 31, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><ul>
+<li>操作机：<code>Kali</code></li>
+<li>目标机： <code>Centos7</code></li>
+<li>目标地址：<code>172.16.12.2</code></li>
+<li>目标主机用户名：<code>root</code></li>
+<li>目标主机密码：<code>ICQsafe666</code></li>
+</ul>
+<p>实验工具</p>
+<p><strong>FireFox：</strong></p>
+<p>火狐浏览器，用来访问互联网的一款免费网页浏览器，支持安装插件来完成渗透测试工作。</p>
+<p><strong>SQLMap</strong></p>
+<p>SQLMap是一个自动化的SQL注入测试工具，包含指纹检测、注入方式、注入成功后的数据取回等等功能。</p>
+<p><strong>AntSword</strong></p>
+<p>中国蚁剑是一款开源的跨平台网站管理工具，它主要面向于合法授权的渗透测试安全人员以及进行常规操作的网站管理员。</p>
+<h4 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h4><p><strong>实验原理</strong></p>
+<ul>
+<li>利用apache日志还原攻击路径及手法</li>
+</ul>
+<h4 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h4><ul>
+<li>登陆目标主机查看apache日志，还原攻击过程</li>
+<li>复现漏洞</li>
+</ul>
+<h4 id="登陆目标主机查看apache访问日志"><a href="#登陆目标主机查看apache访问日志" class="headerlink" title="登陆目标主机查看apache访问日志"></a>登陆目标主机查看apache访问日志</h4><h5 id="步骤1-首先查看目标主机前10行apache访问日志"><a href="#步骤1-首先查看目标主机前10行apache访问日志" class="headerlink" title="步骤1.首先查看目标主机前10行apache访问日志"></a>步骤1.首先查看目标主机前10行apache访问日志</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -n 10 /var/log/httpd/access_log</span><br></pre></td></tr></table></figure>
+
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616131549704.png" alt="image-20210616131549704"></p>
+<p>发现疑似sql注入测试语句</p>
+<h5 id="步骤2-分页查看apache访问日志，分析攻击过程"><a href="#步骤2-分页查看apache访问日志，分析攻击过程" class="headerlink" title="步骤2.分页查看apache访问日志，分析攻击过程"></a>步骤2.分页查看apache访问日志，分析攻击过程</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less /var/log/httpd/access_log</span><br></pre></td></tr></table></figure>
+
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616133117387.png" alt="image-20210616133117387"></p>
+<p>发现大量SQL注入测试语句，目标网站可能存在SQL注入漏洞导致被入侵。</p>
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616133411499.png" alt="image-20210616133411499"></p>
+<p>通过此处日志可以看出目标主机被SQL注入漏洞查询到了后台登录密码并且直接访问了网站后台进行登陆。</p>
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616134027949.png" alt="image-20210616134027949"></p>
+<p>到日志末尾发现登录后发起了GET请求，再发起了POST请求，后直接对api/uc.php传参1=phpinfo();，然后直接使用蚁剑发起POST请求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin/tpl_manage.php?act=edit&amp;tpl_name=../../api/uc.php</span><br></pre></td></tr></table></figure>
+
+<p><strong>结论：</strong></p>
+<p>从最后的日志来看，入侵者通过sql注入查询出后台管理员密码后直接登陆后台，访问admin/tpl_manage.php，在使用蚁剑对/api/uc.php传参，此处/api/uc.php应该是入侵者写入的webshell。</p>
+<h5 id="步骤3-根据日志分析，复现漏洞"><a href="#步骤3-根据日志分析，复现漏洞" class="headerlink" title="步骤3.根据日志分析，复现漏洞"></a>步骤3.根据日志分析，复现漏洞</h5><p><strong>1.访问访问网站主页发现网站使用bluecms通用建站模版搭建的网站</strong></p>
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616140231673.png" alt="image-20210616140231673"></p>
+<p><strong>2.测试日志中的链接是否存在漏洞</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http://172.16.12.2/ad_js.php?ad_id=1 --batch --threads 2 --dbms=mysql --purge</span><br></pre></td></tr></table></figure>
+
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616135522317.png" alt="image-20210616135522317"></p>
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616135720047.png" alt="image-20210616135720047"></p>
+<p>根据sqlmap的回显，发现网站存在SQL注入漏洞，并且支持联合查询注入，布尔盲注，时间盲注三种SQL注入。</p>
+<p><strong>3.利用sql注入测试工具查询数据</strong></p>
+<p>库名</p>
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616140913195.png" alt="image-20210616140913195"></p>
+<p>表名</p>
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616140944526.png" alt="image-20210616140944526"></p>
+<p>从表名可以看出存放后台管理员密码的表该为blue_admin</p>
+<p>字段名</p>
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616141056608.png" alt="image-20210616141056608"></p>
+<p>查询用户名和密码</p>
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616141129793.png" alt="image-20210616141129793"></p>
+<p>因为SQLMap自带字典支持破解一些密码，如果破解不出可以上<a target="_blank" rel="noopener" href="http://www.cmd5.com和www.somd5.com进行查询./">www.cmd5.com和www.somd5.com进行查询。</a></p>
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616141331977.png" alt="image-20210616141331977"></p>
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616141357634.png" alt="image-20210616141357634"></p>
+<p><strong>4.登陆后台复现webshell写入手法</strong></p>
+<p>根据apache日志中的路径找到了关键文件tpl_manage.php</p>
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616141722155.png" alt="image-20210616141722155"></p>
+<p>看到右边存在编辑按钮大致就能知道应该是利用文件编辑的功能对网站内文件写入了webshell。</p>
+<p>利用之前日志中的路径访问发现了如下代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://172.16.12.2/admin/tpl_manage.php?act=edit&amp;tpl_name=../../api/uc.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616142209797.png" alt="image-20210616142209797"></p>
+<p><strong>5.使用webshell管理工具连接</strong></p>
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616142543815.png" alt="image-20210616142543815"></p>
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616142613056.png" alt="image-20210616142613056"></p>
+<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616142631915.png" alt="image-20210616142631915"></p>
+<h4 id="实验结果分析与总结"><a href="#实验结果分析与总结" class="headerlink" title="实验结果分析与总结"></a>实验结果分析与总结</h4><p>在本次实验中，利用apache的访问日志分析主机被入侵的手法和攻击路径，最后利用日志复现了该漏洞。</p>
+<p>由于网站搭建了存在漏洞的通用建站模版，最终导致自己的计算机被控制。</p>
+<h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4><ul>
+<li>当我们搭网站时应该注意那些安全问题？<ol>
+<li>使用最新版本cms或使用未爆出过漏洞的cms。</li>
+<li>更新中间件至最新版本。</li>
+<li>在php.ini中禁用危险函数。</li>
+<li>及时更新服务器操作系统补丁以及版本。</li>
+</ol>
+</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">实验环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="toc-number">2.</span> <span class="toc-text">实验内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.</span> <span class="toc-text">实验步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BB%E9%99%86%E7%9B%AE%E6%A0%87%E4%B8%BB%E6%9C%BA%E6%9F%A5%E7%9C%8Bapache%E8%AE%BF%E9%97%AE%E6%97%A5%E5%BF%97"><span class="toc-number">4.</span> <span class="toc-text">登陆目标主机查看apache访问日志</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A41-%E9%A6%96%E5%85%88%E6%9F%A5%E7%9C%8B%E7%9B%AE%E6%A0%87%E4%B8%BB%E6%9C%BA%E5%89%8D10%E8%A1%8Capache%E8%AE%BF%E9%97%AE%E6%97%A5%E5%BF%97"><span class="toc-number">4.1.</span> <span class="toc-text">步骤1.首先查看目标主机前10行apache访问日志</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A42-%E5%88%86%E9%A1%B5%E6%9F%A5%E7%9C%8Bapache%E8%AE%BF%E9%97%AE%E6%97%A5%E5%BF%97%EF%BC%8C%E5%88%86%E6%9E%90%E6%94%BB%E5%87%BB%E8%BF%87%E7%A8%8B"><span class="toc-number">4.2.</span> <span class="toc-text">步骤2.分页查看apache访问日志，分析攻击过程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A43-%E6%A0%B9%E6%8D%AE%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%EF%BC%8C%E5%A4%8D%E7%8E%B0%E6%BC%8F%E6%B4%9E"><span class="toc-number">4.3.</span> <span class="toc-text">步骤3.根据日志分析，复现漏洞</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90%E4%B8%8E%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">实验结果分析与总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-number">6.</span> <span class="toc-text">思考</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
