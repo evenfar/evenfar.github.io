@@ -83,22 +83,22 @@ FireFox：
 </ul>
 <h4 id="登陆目标主机查看apache访问日志"><a href="#登陆目标主机查看apache访问日志" class="headerlink" title="登陆目标主机查看apache访问日志"></a>登陆目标主机查看apache访问日志</h4><h5 id="步骤1-首先查看目标主机前10行apache访问日志"><a href="#步骤1-首先查看目标主机前10行apache访问日志" class="headerlink" title="步骤1.首先查看目标主机前10行apache访问日志"></a>步骤1.首先查看目标主机前10行apache访问日志</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -n 10 /var/log/httpd/access_log</span><br></pre></td></tr></table></figure>
 
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616131549704.png" alt="image-20210616131549704"></p>
+<p><img src="image-20210616131549704.png" alt="image-20210616131549704"></p>
 <p>发现疑似sql注入测试语句</p>
 <h5 id="步骤2-分页查看apache访问日志，分析攻击过程"><a href="#步骤2-分页查看apache访问日志，分析攻击过程" class="headerlink" title="步骤2.分页查看apache访问日志，分析攻击过程"></a>步骤2.分页查看apache访问日志，分析攻击过程</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less /var/log/httpd/access_log</span><br></pre></td></tr></table></figure>
 
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616133117387.png" alt="image-20210616133117387"></p>
+<p><img src="image-20210616133117387.png" alt="image-20210616133117387"></p>
 <p>发现大量SQL注入测试语句，目标网站可能存在SQL注入漏洞导致被入侵。</p>
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616133411499.png" alt="image-20210616133411499"></p>
+<p><img src="image-20210616133411499.png" alt="image-20210616133411499"></p>
 <p>通过此处日志可以看出目标主机被SQL注入漏洞查询到了后台登录密码并且直接访问了网站后台进行登陆。</p>
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616134027949.png" alt="image-20210616134027949"></p>
+<p><img src="image-20210616134027949.png" alt="image-20210616134027949"></p>
 <p>到日志末尾发现登录后发起了GET请求，再发起了POST请求，后直接对api/uc.php传参1=phpinfo();，然后直接使用蚁剑发起POST请求</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin/tpl_manage.php?act=edit&amp;tpl_name=../../api/uc.php</span><br></pre></td></tr></table></figure>
 
 <p><strong>结论：</strong></p>
 <p>从最后的日志来看，入侵者通过sql注入查询出后台管理员密码后直接登陆后台，访问admin/tpl_manage.php，在使用蚁剑对/api/uc.php传参，此处/api/uc.php应该是入侵者写入的webshell。</p>
 <h5 id="步骤3-根据日志分析，复现漏洞"><a href="#步骤3-根据日志分析，复现漏洞" class="headerlink" title="步骤3.根据日志分析，复现漏洞"></a>步骤3.根据日志分析，复现漏洞</h5><p><strong>1.访问访问网站主页发现网站使用bluecms通用建站模版搭建的网站</strong></p>
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616140231673.png" alt="image-20210616140231673"></p>
+<p><img src="image-20210616140231673.png" alt="image-20210616140231673"></p>
 <p><strong>2.测试日志中的链接是否存在漏洞</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http://172.16.12.2/ad_js.php?ad_id=1 --batch --threads 2 --dbms=mysql --purge</span><br></pre></td></tr></table></figure>
 
@@ -109,27 +109,27 @@ FireFox：
 <p>库名</p>
 <p><img src="image-20210616140913195.png" alt="image-20210616140913195"></p>
 <p>表名</p>
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616140944526.png" alt="image-20210616140944526"></p>
+<p><img src="image-20210616140944526.png" alt="image-20210616140944526"></p>
 <p>从表名可以看出存放后台管理员密码的表该为blue_admin</p>
 <p>字段名</p>
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616141056608.png" alt="image-20210616141056608"></p>
+<p><img src="image-20210616141056608.png" alt="image-20210616141056608"></p>
 <p>查询用户名和密码</p>
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616141129793.png" alt="image-20210616141129793"></p>
+<p><img src="image-20210616141129793.png" alt="image-20210616141129793"></p>
 <p>因为SQLMap自带字典支持破解一些密码，如果破解不出可以上<a target="_blank" rel="noopener" href="http://www.cmd5.com和www.somd5.com进行查询./">www.cmd5.com和www.somd5.com进行查询。</a></p>
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616141331977.png" alt="image-20210616141331977"></p>
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616141357634.png" alt="image-20210616141357634"></p>
+<p><img src="image-20210616141331977.png" alt="image-20210616141331977"></p>
+<p><img src="image-20210616141357634.png" alt="image-20210616141357634"></p>
 <p><strong>4.登陆后台复现webshell写入手法</strong></p>
 <p>根据apache日志中的路径找到了关键文件tpl_manage.php</p>
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616141722155.png" alt="image-20210616141722155"></p>
+<p><img src="image-20210616141722155.png" alt="image-20210616141722155"></p>
 <p>看到右边存在编辑按钮大致就能知道应该是利用文件编辑的功能对网站内文件写入了webshell。</p>
 <p>利用之前日志中的路径访问发现了如下代码。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://172.16.12.2/admin/tpl_manage.php?act=edit&amp;tpl_name=../../api/uc.php</span><br></pre></td></tr></table></figure>
 
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616142209797.png" alt="image-20210616142209797"></p>
+<p><img src="image-20210616142209797.png" alt="image-20210616142209797"></p>
 <p><strong>5.使用webshell管理工具连接</strong></p>
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616142543815.png" alt="image-20210616142543815"></p>
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616142613056.png" alt="image-20210616142613056"></p>
-<p><img src="Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/image-20210616142631915.png" alt="image-20210616142631915"></p>
+<p><img src="image-20210616142543815.png" alt="image-20210616142543815"></p>
+<p><img src="image-20210616142613056.png" alt="image-20210616142613056"></p>
+<p><img src="image-20210616142631915.png" alt="image-20210616142631915"></p>
 <h4 id="实验结果分析与总结"><a href="#实验结果分析与总结" class="headerlink" title="实验结果分析与总结"></a>实验结果分析与总结</h4><p>在本次实验中，利用apache的访问日志分析主机被入侵的手法和攻击路径，最后利用日志复现了该漏洞。</p>
 <p>由于网站搭建了存在漏洞的通用建站模版，最终导致自己的计算机被控制。</p>
 <h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4><ul>
