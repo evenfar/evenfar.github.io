@@ -6,6 +6,7 @@
 * UI on top of main sliding area (caption, arrows, close button, etc.).
 * Built just using public methods/properties of PhotoSwipe.
 * 
+
 */
 (function (root, factory) { 
 	if (typeof define === 'function' && define.amd) {

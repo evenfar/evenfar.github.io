@@ -1,4 +1,4 @@
-var Home = location.href,
+var Home = location.href, 
     Pages = 4,
     xhr,
     xhrUrl = '';
