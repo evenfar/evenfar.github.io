@@ -54,7 +54,7 @@
     <div class='main'>
         <h1 class="title">mail钓鱼</h1>
         <div class="stuff">
-            <span>十月 31, 2021</span>
+            <span>三月 3, 2025</span>
             
 
         </div>
@@ -119,34 +119,34 @@
 <ol start="2">
 <li>在新建的标签页中使用命令<code>redesktop -u me -p me 172.16.12.2</code>远程连接到giaogiao公司的it计算机，并且在输入提示中输入<code>yes</code></li>
 </ol>
-<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605165910141.png"></p>
+<p><img src="image-20210605165910141.png"></p>
 <ol start="3">
 <li>回车后就可连接到受害计算机，并且在新显示出来的计算机窗口中，点击最大化</li>
 </ol>
-<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605170103063.png"></p>
+<p><img src="image-20210605170103063.png"></p>
 <ol start="4">
 <li>点击桌面上的<code>foxmail</code>软件，可以进入到giaogiao公司的it员工的邮箱。it员工在收到邮件后，根据邮件的提示，下载了邮件的附件程序，并且双击进行运行。</li>
 </ol>
-<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605170353852.png"></p>
+<p><img src="image-20210605170353852.png"></p>
 <p>保存文件到桌面</p>
-<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605170653812.png"></p>
+<p><img src="image-20210605170653812.png"></p>
 <ol start="5">
 <li>在桌面上，解压<code>update.zip</code>并运行解压后的<code>update.exe</code></li>
 </ol>
-<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605171402049.png"></p>
-<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605171435312.png"></p>
-<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605171508885.png"></p>
+<p><img src="image-20210605171402049.png"></p>
+<p><img src="image-20210605171435312.png"></p>
+<p><img src="image-20210605171508885.png"></p>
 <h4 id="步骤4-扮演攻击者，在终端中可以控制目标计算机"><a href="#步骤4-扮演攻击者，在终端中可以控制目标计算机" class="headerlink" title="步骤4 扮演攻击者，在终端中可以控制目标计算机"></a>步骤4 扮演攻击者，在终端中可以控制目标计算机</h4><ol>
 <li>切换回kali中的终端<code>msfconsole</code>，此时就可以看到目标及其成功上线，可以在终端中查看目标系统信息。</li>
 </ol>
-<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605171703068.png"></p>
+<p><img src="image-20210605171703068.png"></p>
 <ol start="2">
 <li>在<code>meterpreter </code>中执行命令，可以控制目标计算机</li>
 </ol>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; sysinfo</span><br><span class="line">...</span><br><span class="line">meterpreter &gt; ls</span><br><span class="line">...</span><br><span class="line">meterpreter &gt; screenshare</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605171914603.png"></p>
-<p><img src="mail%E9%92%93%E9%B1%BC/image-20210605172056455.png"></p>
+<p><img src="image-20210605171914603.png"></p>
+<p><img src="image-20210605172056455.png"></p>
 <blockquote>
 <p> 执行命令<code>sysinfo</code>用来查看目标操作系统信息</p>
 </blockquote>
